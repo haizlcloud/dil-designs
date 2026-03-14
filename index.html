@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dil Designs — Artisan Hand-Painted Dolls</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #f5f1e8;
+            --charcoal: #2a2a2a;
+            --gold: #d4a574;
+            --sage: #8b9e8d;
+            --dusty-rose: #a88b9e;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Garamond', 'Georgia', serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e8e3d8;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--charcoal);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, #faf8f3 100%);
+            padding: 6rem 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--sage);
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-style: italic;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--charcoal);
+        }
+
+        .hero-cta:hover {
+            background: transparent;
+            color: var(--charcoal);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 3rem;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .section-header p {
+            color: var(--sage);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .doll-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .doll-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8e3d8;
+        }
+
+        .doll-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .doll-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .doll-info {
+            padding: 2rem;
+        }
+
+        .doll-name {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .doll-style {
+            color: var(--gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .doll-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .inquire-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            background: var(--sage);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+
+        .inquire-btn:hover {
+            background: var(--gold);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 3rem;
+            background: var(--white);
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 3rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .contact p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: var(--charcoal);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--cream);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #e8e3d8;
+            color: var(--sage);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .modal-info {
+            padding: 2rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--charcoal);
+            z-index: 2001;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .doll-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">DIL DESIGNS</div>
+        <ul>
+            <li><a href="#gallery">Collection</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Bespoke Artisan Dolls</h1>
+        <p>Hand-painted masterpieces, each one a unique work of art</p>
+        <a href="#gallery" class="hero-cta">View Collection</a>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="section-header">
+            <h2>The Collection</h2>
+            <p>Twelve unique artisan dolls, each with its own story</p>
+        </div>
+
+        <div class="doll-grid">
+            <!-- Doll 1: Gothic Victorian -->
+            <div class="doll-card" onclick="openModal(0)">
+                <img src="2026-03-13-01-gothic-victorian.png" alt="Gothic Victorian Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Victorian Gothic</div>
+                    <h3 class="doll-name">The Raven's Daughter</h3>
+                    <p class="doll-description">A mysterious figure draped in darkness and lace, with an unsettling allure that speaks to the romantic shadows of the Victorian era.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 2: Hipster -->
+            <div class="doll-card" onclick="openModal(1)">
+                <img src="2026-03-13-02-hipster.png" alt="Hipster Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Contemporary</div>
+                    <h3 class="doll-name">Indie Spirit</h3>
+                    <p class="doll-description">A modern muse with vintage charm, embodying the free-spirited aesthetic of contemporary indie culture.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 3: Cottagecore -->
+            <div class="doll-card" onclick="openModal(2)">
+                <img src="2026-03-13-03-cottagecore.png" alt="Cottagecore Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Cottagecore</div>
+                    <h3 class="doll-name">Garden's Grace</h3>
+                    <p class="doll-description">Adorned with wildflowers and rustic elegance, this doll captures the poetry of nature and pastoral romance.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 4: Cyberpunk -->
+            <div class="doll-card" onclick="openModal(3)">
+                <img src="2026-03-13-04-cyberpunk.png" alt="Cyberpunk Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Cyberpunk</div>
+                    <h3 class="doll-name">Neon Sentinel</h3>
+                    <p class="doll-description">A futuristic vision with metallic accents and neon aesthetics, representing the intersection of technology and artistry.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 5: Art Deco -->
+            <div class="doll-card" onclick="openModal(4)">
+                <img src="2026-03-13-05-artdeco.png" alt="Art Deco Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Art Deco</div>
+                    <h3 class="doll-name">Jazz Age Icon</h3>
+                    <p class="doll-description">A glamorous flapper with beaded elegance and geometric refinement, channeling the golden era of the 1920s.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 6: Fairy Tale -->
+            <div class="doll-card" onclick="openModal(5)">
+                <img src="2026-03-13-06-fairytale.png" alt="Fairy Tale Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Fantasy</div>
+                    <h3 class="doll-name">Enchanted Realm</h3>
+                    <p class="doll-description">A magical presence adorned in Renaissance splendor, summoned from the pages of timeless fairy tales.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 7: Asian -->
+            <div class="doll-card" onclick="openModal(6)">
+                <img src="2026-03-13-07-asian.png" alt="Asian Inspired Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Asian Inspired</div>
+                    <h3 class="doll-name">Silk Heritage</h3>
+                    <p class="doll-description">A tribute to Eastern sophistication, with traditional robes and refined features that honor ancient artistry.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 8: Steampunk -->
+            <div class="doll-card" onclick="openModal(7)">
+                <img src="2026-03-13-08-steampunk.png" alt="Steampunk Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Steampunk</div>
+                    <h3 class="doll-name">Brass & Clockwork</h3>
+                    <p class="doll-description">An intricate mechanical marvel with brass accents and Victorian-industrial elegance, where art meets engineering.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 9: Masquerade -->
+            <div class="doll-card" onclick="openModal(8)">
+                <img src="2026-03-13-09-masquerade.png" alt="Masquerade Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Theatrical</div>
+                    <h3 class="doll-name">Venetian Mystery</h3>
+                    <p class="doll-description">Veiled in theatrical drama, adorned with an ornate mask and sumptuous fabrics that whisper of grand ballrooms.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 10: Bohemian -->
+            <div class="doll-card" onclick="openModal(9)">
+                <img src="2026-03-13-10-bohemian.png" alt="Bohemian Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Bohemian</div>
+                    <h3 class="doll-name">Free Spirit</h3>
+                    <p class="doll-description">A vibrant celebration of artistic expression, with ethnic influences and colorful details that defy convention.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 11: Minimalist -->
+            <div class="doll-card" onclick="openModal(10)">
+                <img src="2026-03-13-11-minimalist.png" alt="Minimalist Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">Minimalist Modern</div>
+                    <h3 class="doll-name">Elegant Simplicity</h3>
+                    <p class="doll-description">Pure refinement through restraint. Clean lines and subtle artistry create timeless sophistication.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Doll 12: French Vintage -->
+            <div class="doll-card" onclick="openModal(11)">
+                <img src="2026-03-13-12-french-vintage.png" alt="French Vintage Doll" class="doll-image">
+                <div class="doll-info">
+                    <div class="doll-style">French Vintage</div>
+                    <h3 class="doll-name">Parisian Romance</h3>
+                    <p class="doll-description">An ode to 1950s French elegance, with lace, ribbons, and timeless grace that transcends decades.</p>
+                    <a href="#contact" class="inquire-btn">Inquire</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2>About the Artist</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Danilo Reyes</h3>
+                <p>Danilo Reyes is a multidisciplinary artist and craftsperson with roots in both music and visual arts. Known in the community as both a singer-gardener and innovative doll designer, Danilo brings a unique perspective to his hand-painted creations.</p>
+                <p>Each doll in the Dil Designs collection is a meditation on identity, artistry, and storytelling. Danilo's approach merges traditional craftsmanship with contemporary vision, creating pieces that are simultaneously nostalgic and forward-looking.</p>
+                <p>With a background spanning music, performance, and visual design, Danilo crafts each doll as a complete character—a figure with depth, history, and soul. These are not mere dolls; they are artistic statements.</p>
+                <p>Every piece is entirely hand-painted and tailored, making each doll truly one-of-a-kind. Limited editions ensure exclusivity and artistic integrity.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/400x500/d4a574/2a2a2a?text=Danilo+Reyes" alt="Danilo Reyes" class="about-image">
+                <p style="text-align: center; margin-top: 1rem; color: var(--sage); font-style: italic;">Artisan, musician, and creator</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2>Inquire About a Piece</h2>
+        <p>Each doll is a unique creation. Contact us to learn more, place a custom order, or inquire about availability.</p>
+        <a href="mailto:danilo@dildesigns.com" class="contact-link">Get In Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dil Designs. All pieces hand-painted and crafted with intention.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modal-image" src="" alt="" class="modal-image">
+            <div class="modal-info">
+                <div id="modal-style" class="doll-style"></div>
+                <h3 id="modal-name" class="doll-name"></h3>
+                <p id="modal-description" class="doll-description"></p>
+                <a href="#contact" class="inquire-btn" onclick="closeModal()">Inquire</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dolls = [
+            {
+                image: "2026-03-13-01-gothic-victorian.png",
+                style: "Victorian Gothic",
+                name: "The Raven's Daughter",
+                description: "A mysterious figure draped in darkness and lace, with an unsettling allure that speaks to the romantic shadows of the Victorian era. Pale porcelain skin contrasts with deep crimson accents and intricate black lace details. This piece captures the essence of gothic romance and melancholic beauty."
+            },
+            {
+                image: "2026-03-13-02-hipster.png",
+                style: "Contemporary",
+                name: "Indie Spirit",
+                description: "A modern muse with vintage charm, embodying the free-spirited aesthetic of contemporary indie culture. Cat-eye glasses and retro fashion details create an approachable yet stylish presence. This doll celebrates the DIY ethos and authentic individuality of the indie movement."
+            },
+            {
+                image: "2026-03-13-03-cottagecore.png",
+                style: "Cottagecore",
+                name: "Garden's Grace",
+                description: "Adorned with wildflowers and rustic elegance, this doll captures the poetry of nature and pastoral romance. Delicate embroidery and dried flower crown details evoke a storybook aesthetic. Perfect for those who find magic in simple, natural beauty."
+            },
+            {
+                image: "2026-03-13-04-cyberpunk.png",
+                style: "Cyberpunk",
+                name: "Neon Sentinel",
+                description: "A futuristic vision with metallic accents and neon aesthetics, representing the intersection of technology and artistry. Bold geometric makeup and iridescent fabrics create a striking, avant-garde presence. This piece looks to tomorrow's possibilities."
+            },
+            {
+                image: "2026-03-13-05-artdeco.png",
+                style: "Art Deco",
+                name: "Jazz Age Icon",
+                description: "A glamorous flapper with beaded elegance and geometric refinement, channeling the golden era of the 1920s. Gold accents and luxurious fabrics evoke the opulence and sophistication of the Art Deco period. A timeless celebration of glamour."
+            },
+            {
+                image: "2026-03-13-06-fairytale.png",
+                style: "Fantasy",
+                name: "Enchanted Realm",
+                description: "A magical presence adorned in Renaissance splendor, summoned from the pages of timeless fairy tales. Gold embroidery and jeweled details create an otherworldly elegance. This doll brings storybook magic into reality."
+            },
+            {
+                image: "2026-03-13-07-asian.png",
+                style: "Asian Inspired",
+                name: "Silk Heritage",
+                description: "A tribute to Eastern sophistication, with traditional robes and refined features that honor ancient artistry. Intricate embroidery and ornamental details reflect centuries of cultural craftsmanship. A piece that celebrates global beauty."
+            },
+            {
+                image: "2026-03-13-08-steampunk.png",
+                style: "Steampunk",
+                name: "Brass & Clockwork",
+                description: "An intricate mechanical marvel with brass accents and Victorian-industrial elegance, where art meets engineering. Gears and metallic details create a fascinating blend of past and future. For those who love retro-futurism."
+            },
+            {
+                image: "2026-03-13-09-masquerade.png",
+                style: "Theatrical",
+                name: "Venetian Mystery",
+                description: "Veiled in theatrical drama, adorned with an ornate mask and sumptuous fabrics that whisper of grand ballrooms. Every detail suggests intrigue, elegance, and hidden stories. A piece for the dramatically inclined."
+            },
+            {
+                image: "2026-03-13-10-bohemian.png",
+                style: "Bohemian",
+                name: "Free Spirit",
+                description: "A vibrant celebration of artistic expression, with ethnic influences and colorful details that defy convention. Beaded accessories and flowing garments create movement and joy. This doll embodies creative freedom."
+            },
+            {
+                image: "2026-03-13-11-minimalist.png",
+                style: "Minimalist Modern",
+                name: "Elegant Simplicity",
+                description: "Pure refinement through restraint. Clean lines and subtle artistry create timeless sophistication. This doll proves that less is indeed more, with every element serving a purpose. For minimalist aesthetes."
+            },
+            {
+                image: "2026-03-13-12-french-vintage.png",
+                style: "French Vintage",
+                name: "Parisian Romance",
+                description: "An ode to 1950s French elegance, with lace, ribbons, and timeless grace that transcends decades. Soft pastels and delicate embellishments evoke Parisian boutiques and romantic gardens. A classic beauty reimagined."
+            }
+        ];
+
+        function openModal(index) {
+            const doll = dolls[index];
+            document.getElementById('modal-image').src = doll.image;
+            document.getElementById('modal-style').textContent = doll.style;
+            document.getElementById('modal-name').textContent = doll.name;
+            document.getElementById('modal-description').textContent = doll.description;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== document.getElementById('modal')) return;
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
