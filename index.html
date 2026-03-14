@@ -15,26 +15,31 @@
             --cream: #f5f1e8;
             --charcoal: #2a2a2a;
             --gold: #d4a574;
-            --sage: #8b9e8d;
-            --dusty-rose: #a88b9e;
+            --sage: #9eb8a0;
+            --dusty-rose: #c4a8b8;
             --white: #ffffff;
+            --bg: #0a0a0a;
+            --bg-card: #141414;
+            --bg-surface: #111111;
+            --border: #2a2a2a;
+            --text-muted: #999;
         }
 
         body {
             font-family: 'Garamond', 'Georgia', serif;
-            background-color: var(--cream);
-            color: var(--charcoal);
+            background-color: var(--bg);
+            color: var(--cream);
             line-height: 1.6;
         }
 
         /* Navigation */
         nav {
-            background: var(--white);
+            background: var(--bg);
             padding: 2rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #e8e3d8;
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -44,7 +49,7 @@
             font-size: 1.8rem;
             font-weight: 300;
             letter-spacing: 2px;
-            color: var(--charcoal);
+            color: var(--cream);
         }
 
         nav ul {
@@ -55,7 +60,7 @@
 
         nav a {
             text-decoration: none;
-            color: var(--charcoal);
+            color: var(--cream);
             font-size: 0.95rem;
             letter-spacing: 0.5px;
             transition: color 0.3s ease;
@@ -68,7 +73,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--cream) 0%, #faf8f3 100%);
+            background: linear-gradient(135deg, var(--bg) 0%, #0f0e0c 100%);
             padding: 6rem 3rem;
             text-align: center;
         }
@@ -78,7 +83,7 @@
             font-weight: 300;
             letter-spacing: 2px;
             margin-bottom: 1rem;
-            color: var(--charcoal);
+            color: var(--cream);
         }
 
         .hero p {
@@ -93,25 +98,25 @@
         .hero-cta {
             display: inline-block;
             padding: 1rem 3rem;
-            background: var(--charcoal);
-            color: var(--cream);
+            background: var(--gold);
+            color: var(--bg);
             text-decoration: none;
             letter-spacing: 1px;
             text-transform: uppercase;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            border: 2px solid var(--charcoal);
+            border: 2px solid var(--gold);
         }
 
         .hero-cta:hover {
             background: transparent;
-            color: var(--charcoal);
+            color: var(--gold);
         }
 
         /* Gallery Section */
         .gallery {
             padding: 5rem 3rem;
-            background: var(--cream);
+            background: var(--bg);
         }
 
         .section-header {
@@ -124,7 +129,7 @@
             font-weight: 300;
             letter-spacing: 2px;
             margin-bottom: 0.5rem;
-            color: var(--charcoal);
+            color: var(--cream);
         }
 
         .section-header p {
@@ -144,16 +149,17 @@
         .doll-card {
             position: relative;
             overflow: hidden;
-            background: var(--white);
+            background: var(--bg-card);
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e8e3d8;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
         }
 
         .doll-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.15);
             transform: translateY(-2px);
+            border-color: var(--gold);
         }
 
         .doll-image {
@@ -171,7 +177,7 @@
             font-size: 1.3rem;
             font-weight: 500;
             margin-bottom: 0.5rem;
-            color: var(--charcoal);
+            color: var(--cream);
         }
 
         .doll-style {
@@ -183,7 +189,7 @@
         }
 
         .doll-description {
-            color: #666;
+            color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.5;
         }
@@ -192,23 +198,25 @@
             display: inline-block;
             margin-top: 1rem;
             padding: 0.7rem 1.5rem;
-            background: var(--sage);
-            color: var(--white);
+            background: transparent;
+            color: var(--gold);
             text-decoration: none;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gold);
         }
 
         .inquire-btn:hover {
             background: var(--gold);
+            color: var(--bg);
         }
 
         /* About Section */
         .about {
             padding: 5rem 3rem;
-            background: var(--white);
+            background: var(--bg-surface);
         }
 
         .about-content {
@@ -225,27 +233,28 @@
             font-weight: 300;
             margin-bottom: 1rem;
             letter-spacing: 1px;
-            color: var(--charcoal);
+            color: var(--cream);
         }
 
         .about-text p {
             margin-bottom: 1rem;
-            color: #666;
+            color: var(--text-muted);
             line-height: 1.8;
         }
 
         .about-image {
             width: 100%;
             border-radius: 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         /* Contact Section */
         .contact {
             padding: 3rem;
-            background: var(--charcoal);
+            background: #0f0e0c;
             color: var(--cream);
             text-align: center;
+            border-top: 1px solid var(--border);
         }
 
         .contact h2 {
@@ -258,13 +267,14 @@
         .contact p {
             margin-bottom: 2rem;
             font-size: 1.1rem;
+            color: var(--text-muted);
         }
 
         .contact-link {
             display: inline-block;
             padding: 1rem 2rem;
             background: var(--gold);
-            color: var(--charcoal);
+            color: var(--bg);
             text-decoration: none;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -274,15 +284,16 @@
 
         .contact-link:hover {
             background: var(--cream);
+            color: var(--bg);
         }
 
         /* Footer */
         footer {
-            background: var(--white);
+            background: var(--bg);
             padding: 2rem;
             text-align: center;
-            border-top: 1px solid #e8e3d8;
-            color: var(--sage);
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
             font-size: 0.9rem;
             letter-spacing: 0.5px;
         }
@@ -295,7 +306,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.92);
             z-index: 2000;
             align-items: center;
             justify-content: center;
@@ -306,12 +317,13 @@
         }
 
         .modal-content {
-            background: var(--white);
+            background: var(--bg-card);
             max-width: 600px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            border: 1px solid var(--border);
         }
 
         .modal-image {
@@ -331,7 +343,7 @@
             border: none;
             font-size: 2rem;
             cursor: pointer;
-            color: var(--charcoal);
+            color: var(--cream);
             z-index: 2001;
         }
 
@@ -536,7 +548,7 @@
                 <p>Every piece is entirely hand-painted and tailored, making each doll truly one-of-a-kind. Limited editions ensure exclusivity and artistic integrity.</p>
             </div>
             <div>
-                <img src="https://via.placeholder.com/400x500/d4a574/2a2a2a?text=Danilo+Reyes" alt="Danilo Reyes" class="about-image">
+                <img src="https://via.placeholder.com/400x500/1a1a1a/d4a574?text=Danilo+Reyes" alt="Danilo Reyes" class="about-image">
                 <p style="text-align: center; margin-top: 1rem; color: var(--sage); font-style: italic;">Artisan, musician, and creator</p>
             </div>
         </div>
